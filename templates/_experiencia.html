@@ -3,39 +3,18 @@
             <section class="resume-section" id="experience">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Experiência Profissional</h2>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Técnico de Desenvolvimento Senior</h3>
-                            <div class="subheading mb-3">CELEPAR - Companhia de Tecnologia da Informação e Comunicação do Paraná</div>
-                            <p>Atuando como desenvolvedor no sistema de ERP meta4 que é responsável pela gestão de RH e folha de pagamento dos servidores do estado bem como o sistema de concessão de aposentadorias da Paraná Previdência.</p>
+                    {% if experiencia %}
+                    {% for exp in experiencia %}
+                        <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                            <div class="flex-grow-1">
+                                <h3 class="mb-0">{{exp.cargo}}</h3>
+                                <div class="subheading mb-3">{{exp.empresa}}</div>
+                                <p>{{exp.descricao}}</p>
+                            </div>
+                            <div class="flex-shrink-0"><span class="text-primary">{{exp.inicio|date:"F Y"}} - {{exp.fim|date:"F Y"}}</span></div>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Abril 2016 - Atualmente</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Técnico de Desenvolvimento Pleno</h3>
-                            <div class="subheading mb-3">CELEPAR - Companhia de Tecnologia da Informação e Comunicação do Paraná</div>
-                            <p>Codificando programas de computador na plataforma meta4 e dando suporte aos usuários sobre o funcionamento dos sistemas.</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Outubro 2010 - Março 2016</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Técnico de Desenvolvimento Júnior</h3>
-                            <div class="subheading mb-3">CELEPAR - Companhia de Tecnologia da Informação e Comunicação do Paraná</div>
-                            <p>Codificando programas de computador na plataforma meta4 e dando suporte aos usuários sobre o funcionamento dos sistemas.</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Julho 2006 - Setembro 2010</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Estágiário</h3>
-                            <div class="subheading mb-3">Toroid do Brasil Ind. E Com. de Transformadores</div>
-                            <p>Projeto de fontes chaveadas e programação de microcontroladores.</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Dezembro 2005 - Maio 2006</span></div>
-                    </div>
-                    
+                    {% endfor %}
+                    {% endif %}  
                 </div>
             </section>
             
