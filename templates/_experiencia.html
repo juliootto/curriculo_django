@@ -11,7 +11,13 @@
                                 <div class="subheading mb-3">{{exp.empresa}}</div>
                                 <p>{{exp.descricao}}</p>
                             </div>
-                            <div class="flex-shrink-0"><span class="text-primary">{{exp.inicio|date:"F Y"}} - {{exp.fim|date:"F Y"}}</span></div>
+                            <div class="flex-shrink-0"><span class="text-primary">{{exp.inicio|date:"F Y"}} - 
+                                {% if exp.fim %}
+                                    {{exp.fim|date:"F Y"}}
+                                {% else %}
+                                Atual
+                                {% endif %}
+                                </span></div>
                         </div>
                     {% endfor %}
                     {% endif %}  

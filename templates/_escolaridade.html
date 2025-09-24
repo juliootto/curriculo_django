@@ -3,26 +3,24 @@
 <section class="resume-section" id="education">
     <div class="resume-section-content">
         <h2 class="mb-5">Formação Acadêmica</h2>
+        {% if escolaridade %}
+        {% for formacao in escolaridade %}
         <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
             <div class="flex-grow-1">
-                <h3 class="mb-0">Universidade Estácio de Sá</h3>
-                <div class="subheading mb-3">Graduação em Análise e Desenvolvimento de Sistemas</div>
+                <h3 class="mb-0">{{formacao.instituicao_ensino}}</h3>
+                <div class="subheading mb-3">{{formacao.curso}}</div>
             </div>
-            <div class="flex-shrink-0"><span class="text-primary">Abril 2024 - Cursando</span></div>
-        </div>
-        <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-            <div class="flex-grow-1">
-                <h3 class="mb-0">ESAB – ESCOLA SUPERIOR ABERTA DO BRASIL</h3>
-                <div class="subheading mb-3">MBA Profissional em Sistemas de Informação</div>
+            <div class="flex-shrink-0">
+                <span class="text-primary">{{formacao.inicio|date:"F Y"}} - 
+                    {% if formacao.fim %}
+                        {{formacao.fim|date:"F Y"}}
+                    {% else %}
+                        Atual
+                    {% endif %} 
+                </span>
             </div>
-            <div class="flex-shrink-0"><span class="text-primary">Junho 2017 - Setembro 2018</span></div>
-        </div>
-        <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-            <div class="flex-grow-1">
-                <h3 class="mb-0">UTFPR – Universidade Tecnológica Federal do Paraná</h3>
-                <div class="subheading mb-3">Graduação em Engenharia Elétrica com ênfase em Eletrônica e Telecomunicações.</div>
-            </div>
-            <div class="flex-shrink-0"><span class="text-primary">Julho 2002 - Outubro 2010</span></div>
-        </div>
+        </div>  
+        {% endfor %}
+        {% endif %}     
     </div>
 </section>

@@ -6,7 +6,7 @@ from curriculo.models import Cursos, ExperienciaProficional, Escolaridade, Conta
 def index(request):
     cursos = Cursos.objects.all().order_by('-fim')
     experiencia = ExperienciaProficional.objects.all().order_by('-inicio')
-    escolaridade = Escolaridade.objects.all().order_by('-fim')
+    escolaridade = Escolaridade.objects.all().order_by('-inicio')
     interesses = Interesses.objects.all().order_by('-id')
 
     return render(request, 'index.html', { 'cursos': cursos,
