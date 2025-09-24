@@ -1,0 +1,19 @@
+<hr class="m-0" />
+            <!-- Cursos-->
+            <section class="resume-section" id="cursos">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Cursos</h2>
+                    <ul class="fa-ul mb-0">
+                        {% if cursos %}
+                        {% for curso in cursos %}
+                            <li>
+                                <span class="fa-li"><i class="fas fa-medal text-warning"></i></span>
+                                {{curso.nome}} - {{curso.empresa}} - {{curso.fim|date:"F/Y"}} 
+                                <a href="{{curso.certificado}}" target="_blank" rel="noopener noreferrer">Certificado</a>                        
+                            </li>
+                        {% endfor %}
+                        {% endif %}                        
+                    </ul>
+                    
+                </div>
+            </section> 
