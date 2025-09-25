@@ -85,6 +85,26 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+/* Estilo para o link discreto do admin */
+.admin-link {
+  position: fixed;       /* Fixa o link na tela, mesmo com a rolagem */
+  bottom: 15px;          /* 15 pixels de distância do fundo */
+  right: 15px;           /* 15 pixels de distância da direita */
+  color: #adb5bd;        /* Uma cor cinza bem clara e discreta */
+  font-size: 1.2rem;     /* Tamanho do ícone */
+  text-decoration: none; /* Remove o sublinhado do link */
+  z-index: 1000;         /* Garante que ele fique acima de outros elementos */
+  transition: color 0.2s ease-in-out; /* Adiciona uma transição suave na cor */
+}
+
+/* Deixa o ícone um pouco mais visível ao passar o mouse por cima */
+.admin-link:hover {
+  color: #495057;        /* Um cinza mais escuro */
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
@@ -10879,9 +10899,7 @@ p.lead {
 #sideNav .navbar-toggler:focus {
   outline-color: #d48a6e;
 }
-html {
-  scroll-behavior: smooth;
-}
+
 
 @media (min-width: 992px) {
   #sideNav {

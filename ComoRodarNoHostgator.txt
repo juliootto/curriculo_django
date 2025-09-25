@@ -1,0 +1,55 @@
+Deve-se verificar qual versão do Python está rodando no seu servidor, e verificar se a versão do teu projeto e das tuas bibliotecas são compatíveis.
+
+baixar o virtualenv:  
+    https://github.com/pypa/virtualenv/tarball/16.7.9
+
+pode usar o comando abaixo para baixar 
+    cwd domínio.com.br; curl --location --output virtualenv.tar.gz https://github.com/pypa/virtualenv/tarball/16.7.9  
+
+Extraia o conteúdo do pacote
+    tar -xvzf virtualenv.tar.gz 
+
+Agora temos que criar o ambiente: 
+    python pypa-virtualenv-34c62ba/virtualenv.py .venv
+
+Após criar o ambiente pode excluir a pasta pypa-virtualenv-34c62ba.
+
+Ativar o ambiente:
+    source .venv/bin/activate
+
+Instalar as bibliotecas do seu projeto:
+    pip install -r requirements.txt
+
+instalar as bibliotecas adicionais:
+    pip install flup
+    pip install django-wsgi 
+
+fazer o deploy do seu projeto.
+
+criar o arquivo .htaccess com o texto abaixo:
+    AddHandler fcgid-script .fcgi
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.fcgi/$1 [QSA,L]
+
+criar o arquivo index.fcgi:
+    #!/homeX/CONTA/PASTA_DO_SITE/.venv/bin/python
+
+    import os, sys 
+    from flup.server.fcgi import WSGIServer 
+    from django.core.wsgi import get_wsgi_application 
+
+    # The rest of your code remains the same
+    sys.path.insert(0, "/homeX/CONTA/PASTA_DO_SITE")
+    os.environ['DJANGO_SETTINGS_MODULE'] = "setup.settings" 
+
+    WSGIServer(get_wsgi_application()).run()
+
+Adicione a permissão 0755 no arquivo, execute o comando abaixo:    
+     chmod 0755 index.fcgi
+
+Lembrar de modificar o settings.py:
+    ALLOWED_HOSTS = ['seudominio.com.br']     
+
+
+O site já deve estar funcionando.
