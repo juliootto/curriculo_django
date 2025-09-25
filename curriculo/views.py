@@ -36,9 +36,14 @@ def index(request):
                 from_email = settings.EMAIL_HOST_USER
                 # Coloque aqui o seu e-mail para onde você quer receber a notificação
                 recipient_list = [settings.EMAIL_DESTINATION,] 
+                print("--- TENTANDO ENVIAR E-MAIL ---")
+                print(f"Assunto: {subject}")
+                print(f"De: {from_email}")
+                print(f"Para: {recipient_list}")
 
                 # 4. Envie o e-mail
                 send_mail(subject, message_body, from_email, recipient_list)
+                print("--- FUNÇÃO SEND_MAIL EXECUTADA SEM ERRO ---")
                 
                 messages.success(request, 'Mensagem enviada com sucesso!')
 
