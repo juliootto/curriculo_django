@@ -27,10 +27,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('SECRET_KEY')) 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+if str(os.getenv('SERVER_PATH')) in str(BASE_DIR):
+    DEBUG = False
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = ['juliootto.dev.br','www.juliootto.dev.br','127.0.0.1','localhost',]
-
 
 # Application definition
 
